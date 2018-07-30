@@ -67,16 +67,21 @@ samtoolsのインストール
 ```% conda install samtools```
 
 kallistoのインストール
+
 ```% conda install kallisto```
 
 `align_and_estimate_abundance.pl`は、Trinityパッケージに含まれているので、TrinityをGitHubから取ってくる
+
 ```
 % cd 
 % cd Downloads 
 % git clone https://github.com/trinityrnaseq/trinityrnaseq
 ```
 
+#### 発現定量スクリプトの実行
+
 以下のスクリプトを`align_and_estimate_abundance.sh`として保存　 [【参考ブログ】](https://bonohu.github.io/align-and-estimate-abundance.html)
+
 ```
 #!/bin/sh
 thre=4
@@ -96,8 +101,11 @@ time perl /Users/bono/Downloads/trinityrnaseq/util/align_and_estimate_abundance.
 ```
 
 以下のコマンドでスクリプトを実行
-`% sh align_and_estimate_abundance.sh `
 
+```% sh align_and_estimate_abundance.sh ```
 
+#### 発現定量結果の閲覧
+
+`% less kallisto_out/abundance.tsv`
 
 
