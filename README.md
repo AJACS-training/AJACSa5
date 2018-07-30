@@ -53,21 +53,30 @@ TSAに関してもSRA同様、DDBJ/EBI/NCBIで同じデータが維持されて�
 
 ### 【課題3】```align_and_estimate_abundance.sh```を用いて発現定量
 
-- ツールの準備
-	- Anaconda([miniconda](https://conda.io/miniconda.html))とBiocondaのインストール [【参考ブログ】](https://bonohu.wordpress.com/2017/07/08/bioconda/)
-`% conda config --add channels defaults`
-`% conda config --add channels conda-forge`
-`% conda config --add channels bioconda`
-	- samtoolsのインストール
-`% conda install samtools`
-	- kallistoのインストール
-`% conda install kallisto`
-	- ```align_and_estimate_abundance.pl```は、Trinityパッケージに含まれているので、TrinityをGitHubから取ってくる
-`% cd `
-`% cd Downloads `
-`% git clone https://github.com/trinityrnaseq/trinityrnaseq`
+#### ツールの準備
 
-- 以下のスクリプトを`align_and_estimate_abundance.sh`として保存　 [【参考ブログ】](https://bonohu.github.io/align-and-estimate-abundance.html)
+Anaconda([miniconda](https://conda.io/miniconda.html))とBiocondaのインストール [【参考ブログ】](https://bonohu.wordpress.com/2017/07/08/bioconda/)
+```
+% conda config --add channels defaults
+% conda config --add channels conda-forge
+% conda config --add channels bioconda
+```
+
+samtoolsのインストール
+
+```% conda install samtools```
+
+kallistoのインストール
+```% conda install kallisto```
+
+`align_and_estimate_abundance.pl`は、Trinityパッケージに含まれているので、TrinityをGitHubから取ってくる
+```
+% cd 
+% cd Downloads 
+% git clone https://github.com/trinityrnaseq/trinityrnaseq
+```
+
+以下のスクリプトを`align_and_estimate_abundance.sh`として保存　 [【参考ブログ】](https://bonohu.github.io/align-and-estimate-abundance.html)
 ```
 #!/bin/sh
 thre=4
@@ -86,7 +95,7 @@ time perl /Users/bono/Downloads/trinityrnaseq/util/align_and_estimate_abundance.
 --prep_reference --output_dir kallisto_out
 ```
 
-- 以下のコマンドでスクリプトを実行
+以下のコマンドでスクリプトを実行
 `% sh align_and_estimate_abundance.sh `
 
 
