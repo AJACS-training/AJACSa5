@@ -29,7 +29,10 @@ DDBJ/EBI/NCBIの3つによって運営されている国際塩基配列データ
 日本からだとDDBJのそれが最寄り。
 
 ### 【課題1】[DDBJ Search](http://sra.dbcls.jp/)を使って、SRAから興味深いデータを検索してみましょう
-- 気になるFASTQデータをSRAからダウンロードしましょう
+1. 気になるFASTQデータをテキスト検索、SRA(DDBJ)からダウンロードします(例: DRR118520)
+2. 出て来た**RUN**の所の*sra*のリンクを「リンクのアドレスをコピー」して、`curl`コマンドで取得します
+`curl -O ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/sra/ByExp/sra/DRX/DRX111/DRX111587/DRR118520/DRR118520.sra`
+
 
 ## Transcriptome Shotgun Assembly (TSA)とは？
 
@@ -39,8 +42,12 @@ TSAに関してもSRA同様、DDBJ/EBI/NCBIで同じデータが維持されて�
 - [NCBIのTSAウェブサイト](https://www.ncbi.nlm.nih.gov/genbank/tsa/)
 
 
-### 【課題2】NCBIのTSA Browserを使って、TSAから興味深いデータを検索してみましょう
-- 気になるTSAデータをNCBIで検索してデータをダウンロードしましょう
+### 【課題2】NCBIの[TSA Browser](https://www.ncbi.nlm.nih.gov/Traces/wgs/?view=TSA)を使って、TSAから興味深いデータを検索してみましょう
+- 気になるTSAデータをNCBIで検索
+	- 左の'Taxonomic Groups’からや、'Term'から直接
+- アッセンブルされた配列データ(FASTA形式)をダウンロード
+	- 'Download'タブから
+	- Sequence Read ArchiveのどのRUN ID（`SRR`,`ERR`, `DRR`のいずれかから始まる）からアッセンブルされたものか、に注意
 
 
 
@@ -62,16 +69,18 @@ Anaconda([miniconda](https://conda.io/miniconda.html))とBiocondaのインスト
 % conda config --add channels bioconda
 ```
 
-samtoolsのインストール
+- SRA形式ファイルをFASTQ形式に変換する
+	- `fastq-dump`するのに必要なsra-toolsをインストール
+```% conda install sra-tools```
+	- fastq-dumpの実行例（paired-endの場合）
+```% fastq-dump DRR118520.sra --split-files```
 
+- 発現定量に必要なツールのインストール
+	- samtools
 ```% conda install samtools```
-
-kallistoのインストール
-
+	- kallisto
 ```% conda install kallisto```
-
-`align_and_estimate_abundance.pl`は、Trinityパッケージに含まれているので、TrinityをGitHubから取ってくる
-
+	- `align_and_estimate_abundance.pl`は、Trinityパッケージに含まれているので、TrinityをGitHubから取ってくる。その際、以下の例ではホームディレクトリ以下の`Downloads`以下に取ってくるようにしてある。
 ```
 % cd 
 % cd Downloads 
