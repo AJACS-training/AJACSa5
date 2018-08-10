@@ -26,7 +26,7 @@ DDBJ/EBI/NCBIの3つによって運営されている国際塩基配列データ
 
 日本からだとDDBJのそれが最寄り。
 
-### 【課題1】[DDBJ Search](http://sra.dbcls.jp/)を使って、SRAから興味深いデータを検索
+### 【課題1】[DDBJ Search](http://unagi-inu.bmu.jp)を使って、SRAから興味深いデータを検索
 1. 気になるFASTQデータをテキスト検索、SRA(DDBJ)からダウンロードします(例: DRR118520)
 2. 出て来た**RUN**の所の*sra*のリンクを「リンクのアドレスをコピー」して、例えば`curl`コマンドで取得します
 `curl -O ftp://ftp.ddbj.nig.ac.jp/ddbj_database/dra/sra/ByExp/sra/DRX/DRX111/DRX111587/DRR118520/DRR118520.sra`
